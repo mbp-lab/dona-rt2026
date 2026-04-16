@@ -7,10 +7,6 @@ import rpy2.robjects as ro
 import scipy.stats as stats
 import statsmodels.api as sm
 from pymer4.models import Lm, Lmer
-# from rpy2.robjects import Formula, globalenv, pandas2ri
-# from rpy2.robjects.conversion import localconverter
-# from rpy2.robjects.packages import importr
-# from rpy2.robjects.vectors import ListVector
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 from statsmodels.stats.diagnostic import het_breuschpagan
 from statsmodels.stats.stattools import durbin_watson
@@ -157,7 +153,7 @@ class LMM():
     ) -> None:
         ### 2 is no autocorrelation, 0 is positive, 4 negative. <1.5 or >2.5 is autocorrelation.
         dw = durbin_watson(self.model.residuals)
-        print("Durbin Watson autocorrelation:",dw)
+        print("Durbin Watson autocorrelation:", dw)
     
     def shapiro_wilk_normality(self, what: str) -> None:
         try:

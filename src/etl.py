@@ -236,8 +236,6 @@ def aggregate(
             .reset_index()
         )
     elif agg_type == "probability":
-        print(f"In aggregate() - probability: {df.columns}")
-
         # Define a custom aggregation function for rt_ego and rt_alter
         def fraction_leq_period(series):
             return (series <= agg_period).mean()
@@ -262,7 +260,6 @@ def aggregate(
             f"aggregate_conversations: agg_type must be one of "
             f"['mean', 'median', 'probability'] but was {agg_type}."
         )
-    print(f"End of aggregate(): {df.columns}")
     return df
 
 
@@ -335,8 +332,6 @@ def _transform_filtering(experiment_config, df: pd.DataFrame) -> pd.DataFrame:
             f"Largest conversation gap of rt <= {thresh} filters {df_size_before - df.count()[0]}/{df_size_before}"
             f"({percentage_removed:.2f}%) of messages"
         )
-    # if experiment_config.conversation_gap.top_n:
-    ### Calculate conversation gap
     if experiment_config.conversation_min_wc_threshold:
         ### Reporting
         prev_len = len(df)
@@ -359,7 +354,7 @@ def _transform_filtering(experiment_config, df: pd.DataFrame) -> pd.DataFrame:
             f"rows ({(prev_len - post_len) / prev_len * 100:.2f}%) and "
             f"{(prev_n_convs - post_n_convs)}/{prev_n_convs} convs."
         )
-        print(f"Removed conv IDs: {set(prev_donors).difference(set(post_donors))}")
+        print(f"Removed donor IDs: {set(prev_donors).difference(set(post_donors))}")
 
     if experiment_config.rt_threshold:
         df_size_before = df.count()[0]
@@ -473,8 +468,6 @@ def filter_system_messages(
     print(
         f"Remaining WA groups: {(df[df.data_source_id == 2].groupby('conversation_id').sender_id.nunique() > 2).sum()}"
     )
-    # assert isinstance(df, pd.DataFrame)
-    print(type(df))
     return df
 
 

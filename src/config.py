@@ -35,7 +35,7 @@ class ExperimentConfig(BaseModel):
     jsd_base: Optional[float] = 2 # Base for the logarithm when calculating JSD
     lmm_formula: Optional[str] = None
     n_boot: int = Field(ge=1, default=500)
-    predictors: List[str] = None
+    predictors: Optional[List[str]] = None
 
     # Whether to round values up to (t % 60 == 0) without treating t as minutes
     round_to_minute: Optional[bool] = None
@@ -44,7 +44,7 @@ class ExperimentConfig(BaseModel):
     temporal_resolution: Optional[Literal["minute", "second"]] = Field(default="second")
     filter_temporal_resolution: Optional[Literal["seconds_only"]] = Field(default=None)
     model: Optional[Literal["Lm", "Lmer", "GLMM"]] = Field(default="Lmer")
-    experiment_name: str = None
+    experiment_name: Optional[str] = None
     optimizer: Literal["bobyqa", "Nelder_Mead", "nloptwrap", "optimx"] = Field(default="bobyqa")
     optCtrl: Optional[Dict[str, Any]] = None
     aggregation: Optional[AggregationConfig] = AggregationConfig()
