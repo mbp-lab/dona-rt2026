@@ -1,8 +1,8 @@
 # Sorry for the late reply: Response times and reciprocation in WhatsApp and Instagram chats
 
-Code accompanying the [arxiv paper](placeholder). Please cite as:
+Code accompanying the [arxiv paper](https://doi.org/10.48550/arXiv.2605.03687). Please cite as:
 
-> [CITATION / LINK PLACEHOLDER]
+> Martin, F., Hakobyan, O., & Drimalla, H. (2026). Sorry for the late reply: Response times and reciprocity in WhatsApp and Instagram chats (arXiv:2605.03687). arXiv. https://doi.org/10.48550/arXiv.2605.03687
 
 
 ## Repository structure
